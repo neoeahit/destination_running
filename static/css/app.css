@@ -13,3 +13,15 @@ body {
 .selectize-control > .selectize-dropdown {
     top: 36px;
 }
+
+.tile{
+    width: 30%;
+    background-color: #F5F5F5;
+    height: 5%;
+    margin-bottom: 5%;
+    margin-right: 3%;
+    font-size: 80%;
+    -webkit-box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
+    -moz-box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
+    box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
+}

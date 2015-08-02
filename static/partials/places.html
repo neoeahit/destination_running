@@ -1,0 +1,31 @@
+<div ng-controller="DemoCtrl">
+
+    <br>
+    <br>
+    <br>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="66" aria-valuemin="0"
+             aria-valuemax="100" style="width: 66%">
+            Customize >
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <i ng-repeat="place in results">
+                <div class="tile col-md-{{($index%4)+1}}">
+                    <div>
+                        <img ng-src="{{place.icon}}">
+                        <b>{{place.name}}</b>
+
+                        <p>{{place.types}}</p>
+                    </div>
+
+                </div>
+            </i>
+        </div>
+    </div>
+</div>
+

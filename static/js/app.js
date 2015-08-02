@@ -10,12 +10,18 @@ activityModule.config(function($stateProvider, $urlRouterProvider) {
 
         .state('home', {
             url: '/home',
-            templateUrl: 'partials/customize.html'
+            templateUrl: 'partials/home.html'
         })
 
         .state('customize', {
             url: '/customize',
             templateUrl: 'partials/customize.html'
+
+        })
+
+        .state('places', {
+            url: '/places',
+            templateUrl: 'partials/places.html'
 
         })
 
@@ -52,6 +58,17 @@ activityModule.controller('DemoCtrl', function($scope, $http, $timeout) {
         }
     }
 
+    $scope.results = []
+
+    $http.get('/api/lat/4/long/2').
+        then(function(response) {
+            $scope.results = response.data.results
+            console.log($scope.results)
+        }, function(response) {
+            console.log(response)
+
+        });
+
 
     var createMarker = function (info){
         var marker = new google.maps.Marker({
@@ -63,3 +80,5 @@ activityModule.controller('DemoCtrl', function($scope, $http, $timeout) {
     }
 
 });
+
+
