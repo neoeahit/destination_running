@@ -1,0 +1,22 @@
+<!-- partial-customize.html -->
+
+<div class="jumbotron text-center">
+    <br>
+    <br>
+
+    <div ng-controller="DemoCtrl">
+
+        <h3>Choose your travel destinations</h3>
+        <ui-select multiple ng-model="selectedCountries" theme="select2"
+                   style="width: 800px;">
+            <ui-select-match placeholder="Type a few letters of your destination...">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="country in countries ">
+                <div ng-bind-html="country.name"></div>
+                <small>
+                    Code: {{country.code}}
+                </small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+</div>
