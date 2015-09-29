@@ -1,8 +1,9 @@
-.navbar { border-radius:0; }
-
+.navbar {
+    border-radius: 0;
+}
 
 body {
-    padding: 15px;
+    width: 100%;
 }
 
 .select2 > .select2-choice.ui-select-match {
@@ -14,14 +15,125 @@ body {
     top: 36px;
 }
 
-.tile{
+.tile {
     width: 30%;
     background-color: #F5F5F5;
     height: 5%;
     margin-bottom: 5%;
     margin-right: 3%;
     font-size: 80%;
-    -webkit-box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
-    -moz-box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
-    box-shadow: 14px 13px 7px -7px rgba(0,0,0,0.23);
+    -webkit-box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
+    box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
 }
+
+.tile1 {
+    width: 15%;
+    background-color: #F5F5F5;
+    height: 5%;
+    margin-bottom: 5%;
+    margin-right: 3%;
+    font-size: 80%;
+    -webkit-box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
+    box-shadow: 14px 13px 7px -7px rgba(0, 0, 0, 0.23);
+}
+
+.container {
+    width: 100%;
+}
+
+section.module:last-child {
+    margin-bottom: 0;
+}
+
+section.module h2 {
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+section.module p {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+section.module p:last-child {
+    margin-bottom: 0;
+}
+
+section.module.content {
+    padding: 40px 0;
+}
+
+section.module.parallax {
+    height: 600px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section.module.parallax h1 {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 48px;
+    line-height: 600px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+section.module.parallax-1 {
+    background-image: url("http://www.cssscript.com/demo/pure-css-parallax-background-images/img/gCanyon.jpg");
+}
+
+section.module.parallax-2 {
+    background-image: url("http://www.cssscript.com/demo/pure-css-parallax-background-images/img/rMountains.jpg");
+}
+
+section.module.parallax-3 {
+    background-image: url("/images/image2.jpg");
+}
+
+.url {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 150px;
+    display: block;
+    overflow: hidden
+}
+
+.box {
+    width: 300px;
+    height: 200px;
+    box-shadow: inset 1px 1px 40px 0 rgba(0, 0, 0, .45);
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    margin: 5% auto 0 auto;
+    background-size: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, .75);
+    text-align: center;
+    padding: 45px 0 66px 0;
+    opacity: 0;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.box:hover .overlay {
+    opacity: 1;
+}
+
+.plus {
+    font-family: Helvetica;
+    font-weight: 900;
+    color: rgba(255, 255, 255, .85);
+    font-size: 96px;
+}
+
