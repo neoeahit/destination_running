@@ -1,0 +1,59 @@
+<div>
+
+    <ul class="nav full-nav nav-pills">
+        <li class="active">
+            <a href="/trending">
+                <i class="icon-graph"></i> At a glance
+            </a></li>
+        <li class="">
+            <a href="/top">
+                <i class="icon-fire"></i> Editor's Review </span>
+            </a></li>
+        <li class="">
+            <a href="/staffpicks">
+                <i class="icon-heart"></i> Race Review
+            </a></li>
+    </ul>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <h2>
+                {{raceinfo.name}}
+            </h2>
+
+            <dl>
+                <dt>Location:</dt>
+                <dd>{{raceinfo.location}}</dd>
+                <dt>Price:</dt>
+                <dd>{{raceinfo.price}}</dd>
+                <dt>Date:</dt>
+                <dd>{{raceinfo.time}}</dd>
+                <dt>Time:</dt>
+                <dd>{{raceinfo.time}}</dd>
+                <dt>Registration Link:</dt>
+                <dd><a href="{{raceinfo.date}}">{{raceinfo.link}}</a></dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-repeat="review in reviews">
+            <div class="col-md-1 tile">
+                <img ng-src="{{photos[$index]}}">
+
+                <div style="margin-top: 2%" class="pull-right">
+                    <a class="btn btn-primary">
+                        <i class="fa fa-heart-o"></i>
+                        <strong>{{review.upvote}}</strong>
+                        <span>LIKES</span>
+                    </a></div>
+                <div class="data">
+                <span class="reviews">
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

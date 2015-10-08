@@ -1,6 +1,6 @@
 'use strict';
 
-var activityModule = angular.module('routerApp', ['ngSanitize','ui.select','ui.router']);
+var activityModule = angular.module('routerApp', ['ngRoute','ui.select','ui.router']);
 
 activityModule.config(function($stateProvider, $urlRouterProvider) {
 
@@ -13,22 +13,28 @@ activityModule.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/home.html'
         })
 
-        .state('customize', {
-            url: '/customize',
-            templateUrl: 'partials/customize.html'
-
-        })
-
-        .state('places', {
-            url: '/places',
-            templateUrl: 'partials/places.html',
-            controller: 'placesCtrl'
+        .state('reviews', {
+            url: '/reviews',
+            templateUrl: 'partials/reviews.html',
+            controller: 'DemoCtrl'
 
         })
 
         .state('about', {
             url: '/about',
-            templateUrl: 'partials/about.html'
+            templateUrl: 'partials/about.html',
+            controller: 'placesCtrl'
+
+        })
+
+        .state('addblog', {
+            url: '/addblog',
+            templateUrl: 'partials/addblogs.html'
+        })
+        .state('race', {
+            url: '/stories/:id',
+            templateUrl: 'partials/specificRace.html',
+            controller: 'race'
         });
 
 
