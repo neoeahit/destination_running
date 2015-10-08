@@ -1,8 +1,8 @@
 .tile {
-    width: 510px;
-    height: 454px;
-    margin: 1%;
-    font-size: 80%;
+    width: 418px;
+    height: 421px;
+    margin-bottom: 1%;
+    margin-top: 1%;
     -webkit-border-radius: 20px 17px 63px 14px;
     -moz-border-radius: 20px 17px 63px 14px;
     border-radius: 20px 17px 63px 14px;
@@ -15,10 +15,8 @@
 .tile img {
     position: absolute;
     z-index: -1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 421px;
     opacity: 1;
     -webkit-border-radius: 20px 17px 63px 14px;
     -moz-border-radius: 20px 17px 63px 14px;
@@ -30,6 +28,8 @@
 }
 
 .tile data {
+    width: 418px;
+    height: 421px;
     position: absolute;
     z-index: 0;
 }
@@ -39,6 +39,7 @@
     border: 2px solid #F0C029;
     background: #F0C029;
     color: #262626;
+    font-size: 90%;
 }
 
 .btn:hover{
@@ -305,7 +306,7 @@ Adding in the layover css
     font-weight: normal;
     font-size: 20px;
     font-family: "open sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    color: white;
+    color: #000000;
 }
 
 /*
@@ -322,4 +323,14 @@ dt {
 
 dd {
     margin-left: 0px;
+}
+
+/*
+line divide
+*/
+
+hr {
+    margin-left: 3%;
+    margin-right: 3%;
+    border-top: 1px solid #aaaaaa;
 }

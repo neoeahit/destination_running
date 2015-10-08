@@ -17,6 +17,8 @@
 
 </div>
 <div class="container-fluid">
+    <h3>At a glance</h3>
+
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-6">
@@ -38,22 +40,34 @@
             </dl>
         </div>
     </div>
-    <div class="row">
-        <div ng-repeat="review in reviews">
-            <div class="col-md-1 tile">
-                <img ng-src="{{photos[$index]}}">
+    <h3>Race Reviews</h3>
 
-                <div style="margin-top: 2%" class="pull-right">
-                    <a class="btn btn-primary">
-                        <i class="fa fa-heart-o"></i>
-                        <strong>{{review.upvote}}</strong>
-                        <span>LIKES</span>
-                    </a></div>
-                <div class="data">
+    <div class="row" ng-repeat="review in reviews">
+        <hr>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 tile">
+            <img ng-src="{{photos[$index]}}">
+
+            <div style="margin-top: 2%;margin-right: 1%" class="pull-right">
+                <a class="btn btn-primary">
+                    <i class="fa fa-heart-o"></i>
+                    <strong>{{review.upvote}}</strong>
+                    <span>LIKE</span>
+                </a></div>
+        </div>
+        <div class="col-md-7 data">
                 <span class="reviews">
+                    <dl>
+                        <dt>Rating:</dt>
+                        <dd>{{review.rating}}</dd>
+                        <dt>Story:</dt>
+                        <dd>{{review.story}}</dd>
+                        <dt>Pros:</dt>
+                        <dd>{{review.pros}}</dd>
+                        <dt>Cons:</dt>
+                        <dd>{{review.cons}}</dd>
+                    </dl>
                 </span>
-                </div>
-            </div>
         </div>
     </div>
 </div>
