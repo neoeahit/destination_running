@@ -301,29 +301,12 @@ Adding in the layover css
     font-family: "open sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     color: #000000;
 }
-
-/*
-hack: dt dd on same line
-*/
-
-
-dt {
+.ratings ul li {
     float: left;
-    clear: left;
-    margin-right: 5px;
-    font-weight: bold;
-}
-
-dd {
-    margin-left: 0px;
-}
-
-/*
-line divide
-*/
-
-hr {
-    margin-left: 3%;
-    margin-right: 3%;
-    border-top: 1px solid #aaaaaa;
+    width: 65px;
+    margin-right: 10px;
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    text-align: center;
 }

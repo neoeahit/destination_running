@@ -52,22 +52,28 @@ class RaceReviewHandler(tornado.web.RequestHandler):
         images = []
         response = api.tag_recent_media(tag_name=str(race_name))
         for media in response[0]:
-            if media.type == 'image':
-                images.append(media.get_standard_resolution_url())
+            images.append(media.get_standard_resolution_url())
 
         cursor = yield db.raceinfo.find_one({"name": race_name})
         if cursor:
             race_info = {"name": str(cursor["name"]), "location": str(cursor["location"]), "date": str(cursor["date"]),
                          "time": str(cursor["time"]), "price": str(cursor["price"]), "link": str(cursor["link"])}
-            people_review = db.reviews.find({"race": race_name}).sort('rating', motor.pymongo.DESCENDING)
+            people_review = db.reviews.find({"race": race_name})
             reviews = []
             while (yield people_review.fetch_next):
                 obj = people_review.next_object()
                 reviews.append(
-                    {"id": str(obj["_id"]), "rating": str(obj["rating"]), "pros": str(obj["pros"]),
+                    {"id": str(obj["_id"]),
+                     "rating": {"cost": str(obj["rating"]["cost"]),
+                                "course": str(obj["rating"]["course"]),
+                                "fluid": str(obj["rating"]["fluid"]),
+                                "fuel": str(obj["rating"]["fuel"]),
+                                "crowd": str(obj["rating"]["crowd"])
+                     },
+                     "pros": str(obj["pros"]),
                      "cons": str(obj["cons"]),
                      "story": str(obj["story"]),
-                     "upvote": str(obj["upvote"])})
+                     "upvote": int(obj["upvote"])})
             self.write(
                 {"race_name": str(race_name), "status": "SUCCESS",
                  "data": {"photos": images, "race_info": race_info, "reviews": reviews}})

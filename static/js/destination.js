@@ -1,7 +1,7 @@
 activityModule.controller('DemoCtrl', function($scope, $http, $location, $q) {
     $scope.stories = []
     $q.all([
-        $http.get('/api/race/NYRRMidnightRun').
+        $http.get('/api/race/BrooklynHalf').
             then(function (response) {
                 $scope.photos = response.data.data.photos
                 $scope.raceinfo = response.data.data.race_info

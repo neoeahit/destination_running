@@ -42,7 +42,7 @@
     </div>
     <h3>Race Reviews</h3>
 
-    <div class="row" ng-repeat="review in reviews">
+    <div class="row" ng-repeat="review in reviews| orderBy:'-upvote'">
         <hr>
         <div class="col-md-1"></div>
         <div class="col-md-4 tile">
@@ -55,11 +55,10 @@
                     <span>LIKE</span>
                 </a></div>
         </div>
-        <div class="col-md-7 data">
+        <div class="col-md-5 data">
                 <span class="reviews">
+
                     <dl>
-                        <dt>Rating:</dt>
-                        <dd>{{review.rating}}</dd>
                         <dt>Story:</dt>
                         <dd>{{review.story}}</dd>
                         <dt>Pros:</dt>
@@ -68,6 +67,93 @@
                         <dd>{{review.cons}}</dd>
                     </dl>
                 </span>
+        </div>
+        <div class="ratings col-md-3">
+            <ul>
+                <li>Cost</li>
+                <li>Course</li>
+                <li>Fluid</li>
+                <li>Fuel</li>
+                <li>Crowd</li>
+            </ul>
+
+            <ul>
+                <li>
+                    <!--cost-->
+                    <div class="radial-progress" data-progress="{{review.rating.cost}}">
+                        <div class="circle">
+                            <div class="mask half">
+                                <div class="cost fill"></div>
+                                <div class="cost fill fix"></div>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="inset">
+                            <div class="percentage"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <!--course-->
+                    <div class="radial-progress" data-progress="{{review.rating.course}}">
+                        <div class="circle">
+                            <div class="mask half">
+                                <div class="course fill"></div>
+                                <div class="course fill fix"></div>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="inset">
+                            <div class="percentage"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <!--fluid-->
+                    <div class="radial-progress" data-progress="{{review.rating.fluid}}">
+                        <div class="circle">
+                            <div class="mask half">
+                                <div class="fluid fill"></div>
+                                <div class="fluid fill fix"></div>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="inset">
+                            <div class="percentage"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <!--fuel-->
+                    <div class="radial-progress" data-progress="{{review.rating.fuel}}">
+                        <div class="circle">
+                            <div class="mask half">
+                                <div class="fuel fill"></div>
+                                <div class="fuel fill fix"></div>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="inset">
+                            <div class="percentage"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <!--crowd-->
+                    <div class="radial-progress" data-progress="{{review.rating.crowd}}">
+                        <div class="circle">
+                            <div class="mask half">
+                                <div class="crowd fill"></div>
+                                <div class="crowd fill fix"></div>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="inset">
+                            <div class="percentage"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

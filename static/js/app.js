@@ -1,6 +1,6 @@
 'use strict';
 
-var activityModule = angular.module('routerApp', ['ngRoute','ui.select','ui.router']);
+var activityModule = angular.module('routerApp', ['angular-svg-round-progress','ngRoute','ui.select','ui.router']);
 
 activityModule.config(function($stateProvider, $urlRouterProvider) {
 
