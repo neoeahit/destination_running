@@ -18,7 +18,9 @@
 }
 
 .radial-progress {
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    z-index: 100;
     width: 60px;
     height: 60px;
     background-color: #d6dadc;

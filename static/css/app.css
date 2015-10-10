@@ -302,11 +302,28 @@ Adding in the layover css
     color: #000000;
 }
 .ratings ul li {
-    float: left;
-    width: 65px;
-    margin-right: 10px;
+    /*float: left;*/
+    /*width: 65px;*/
     list-style: none;
     text-transform: uppercase;
+    z-index: 10;
     font-size: 11px;
     text-align: center;
 }
+
+/*.story*/
+/*{*/
+    /*-webkit-border-radius: 26px;*/
+    /*-moz-border-radius: 26px;*/
+    /*border-radius: 26px;*/
+    /*height:125px;*/
+    /*width:80%;*/
+    /*-webkit-box-shadow: 1px 1px 0px #87CEEB;*/
+    /*-moz-box-shadow: 1px 1px 0px #87CEEB;*/
+    /*box-shadow: 1px 1px 0px #87CEEB;*/
+    /*background-color: #E0FFFF;*/
+    /*padding: 10px;*/
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    /*font-size: 12pt;*/
+    /*color: #888888;*/
+/*}*/
