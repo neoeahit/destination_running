@@ -1,7 +1,7 @@
 import tornado.web, tornado.ioloop
 import tornado
 import motor
-import json
+import auth
 from tornado import gen
 from bson.objectid import ObjectId
 from tornado.options import options
@@ -11,9 +11,10 @@ import config
 api = client.InstagramAPI(access_token=config.access_token, client_secret=config.client_secret)
 
 
-class UpdateUpvotes(tornado.web.RequestHandler):
+class UpdateUpvotes(auth.BaseHandler):
     @tornado.web.asynchronous
     @gen.engine
+    @tornado.web.authenticated
     def get(self, reviewId):
         cursor = yield db.reviews.update({"_id": ObjectId(str(reviewId))}, {
             '$inc': {
@@ -27,9 +28,10 @@ class UpdateUpvotes(tornado.web.RequestHandler):
         self.finish()
 
 
-class RaceReviewHandler(tornado.web.RequestHandler):
+class RaceReviewHandler(auth.BaseHandler):
     @tornado.web.asynchronous
     @gen.engine
+    @tornado.web.authenticated
     def get(self, race_name):
         images = []
         response = api.tag_recent_media(tag_name=str(race_name))
@@ -70,6 +72,8 @@ if __name__ == "__main__":
     handlers = [
         (r"/api/race/(.*)", RaceReviewHandler),
         (r"/api/update/upvotes/(.*)", UpdateUpvotes),
+        (r"/auth/login/", auth.AuthLoginHandler),
+        (r"/auth/logout/", auth.AuthLogoutHandler),
         (r"/(.*)", tornado.web.StaticFileHandler, {"path": "static", "default_filename": "index.html"}
         )]
 
@@ -77,7 +81,9 @@ if __name__ == "__main__":
     application = tornado.web.Application(
         handlers,
         debug=options.debug,
-        db=db
+        db=db,
+        cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
+        login_url="/auth/login/"
     )
     application.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
