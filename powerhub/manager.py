@@ -1,6 +1,5 @@
 import tornado.web, tornado.ioloop
 import tornado
-import motor
 import auth
 from tornado import gen
 from bson.objectid import ObjectId
@@ -19,7 +18,7 @@ class UpdateUpvotes(auth.BaseHandler):
     def post(self):
         request_params = json.loads(self.request.body)
         reviewId = request_params['id']
-        cursor = yield db.reviews.update({"_id": ObjectId(str(reviewId))}, {
+        cursor = yield config.db.reviews.update({"_id": ObjectId(str(reviewId))}, {
             '$inc': {
                 'upvote': 1
             }
@@ -42,7 +41,7 @@ class AddReview(auth.BaseHandler):
         cons = request_params['cons']
         story = request_params['story']
         rating = request_params['rating']
-        cursor = yield db.reviews.insert(
+        cursor = yield config.db.reviews.insert(
             {"username": self.get_current_user().replace('"',''),
              "upvote": 0,
              "race": race_name,
@@ -68,11 +67,11 @@ class RaceReviewHandler(auth.BaseHandler):
         response = api.tag_recent_media(tag_name=str(race_name))
         for media in response[0]:
             images.append(media.get_standard_resolution_url())
-        cursor = yield db.raceinfo.find_one({"name": race_name})
+        cursor = yield config.db.raceinfo.find_one({"name": race_name})
         if cursor:
             race_info = {"name": str(cursor["name"]), "location": str(cursor["location"]), "date": str(cursor["date"]),
                          "time": str(cursor["time"]), "price": str(cursor["price"]), "link": str(cursor["link"])}
-            people_review = db.reviews.find({"race": race_name})
+            people_review = config.db.reviews.find({"race": race_name})
             reviews = []
             while (yield people_review.fetch_next):
                 obj = people_review.next_object()
@@ -108,11 +107,10 @@ if __name__ == "__main__":
         (r"/(.*)", tornado.web.StaticFileHandler, {"path": "static", "default_filename": "index.html"}
         )]
 
-    db = motor.MotorClient().getbookmarks
     application = tornado.web.Application(
         handlers,
         debug=options.debug,
-        db=db,
+        db=config.db,
         cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
         login_url="/auth/login/"
     )
