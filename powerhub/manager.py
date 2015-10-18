@@ -24,7 +24,7 @@ class UpdateUpvotes(auth.BaseHandler):
                 'upvote': 1
             }
         })
-        if (cursor["updatedExisting"] == True):
+        if cursor["updatedExisting"]:
             self.write({"status": "SUCCESS"})
         else:
             self.write({"status": "FAILURE"})
@@ -43,13 +43,18 @@ class AddReview(auth.BaseHandler):
         story = request_params['story']
         rating = request_params['rating']
         cursor = yield db.reviews.insert(
-            {"upvote":0, "race": race_name, "rating": rating, "pros": pros, "cons": cons, "story": story})
+            {"username": self.get_current_user().replace('"',''),
+             "upvote": 0,
+             "race": race_name,
+             "rating": rating,
+             "pros": pros,
+             "cons": cons,
+             "story": story})
         if cursor:
             self.write({"status": "SUCCESS"})
         else:
             self.write({"status": "FAILURE"})
         self.finish()
-
 
 
 class RaceReviewHandler(auth.BaseHandler):

@@ -11,7 +11,10 @@ class AuthLoginHandler(BaseHandler):
     def check_permission(self, password, username):
         if username == "admin" and password == "admin":
             return True
-        return False
+        if username == "vipul" and password == "vipul":
+            return True
+        else:
+            return False
 
     def post(self):
         request_params = json.loads(self.request.body)
