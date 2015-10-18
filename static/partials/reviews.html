@@ -1,21 +1,10 @@
-<div>
-
-    <ul class="nav full-nav nav-pills">
-        <li class="active">
-            <a href="/trending">
-                <i class="icon-graph"></i> At a glance
-            </a></li>
-        <li class="">
-            <a href="/top">
-                <i class="icon-fire"></i> Editor's Review </span>
-            </a></li>
-        <li class="">
-            <a href="/staffpicks">
-                <i class="icon-heart"></i> Race Review
-            </a></li>
-    </ul>
-
+<div ng-click="open()" class="pull-right circle-plus">
+    <div class="circle">
+        <div class="horizontal"></div>
+        <div class="vertical"></div>
+    </div>
 </div>
+
 <div class="container-fluid">
     <h3>At a glance</h3>
 
@@ -55,16 +44,16 @@
                 </a></div>
         </div>
         <div class="col-md-7 data">
-                <div class="reviews pull-left">
-                    <dl>
-                        <dt>Story:</dt>
-                        <dd>{{review.story}}</dd>
-                        <dt>Pros:</dt>
-                        <dd>{{review.pros}}</dd>
-                        <dt>Cons:</dt>
-                        <dd>{{review.cons}}</dd>
-                    </dl>
-                </div>
+            <div class="reviews pull-left">
+                <dl>
+                    <dt>Story:</dt>
+                    <dd>{{review.story}}</dd>
+                    <dt>Pros:</dt>
+                    <dd>{{review.pros}}</dd>
+                    <dt>Cons:</dt>
+                    <dd>{{review.cons}}</dd>
+                </dl>
+            </div>
 
             <div class="ratings pull-right">
                 <ul>
@@ -153,3 +142,38 @@
         </div>
     </div>
 </div>
+
+
+<script type="text/ng-template" id="addReview.html">
+    <div class="modal-header">
+        <h4>The community needs to know your experience...</h4>
+    </div>
+    <form ng-submit="submit()">
+        <div class="modal-body">
+            <dl class="dl-horizontal" ng-repeat="rating in ratings">
+                <dt>{{rating.title}}</dt>
+                <dd>
+                    <rating ng-model="rating.current" max="10"
+                            readonly="isReadonly"
+                            on-hover="hoveringOver($index,value)"
+                            on-leave="overStar = null"></rating>
+                    <span class="label"
+                          ng-class="{'label-warning': rating.percent<30, 'label-info': rating.percent>=30 && rating.percent<70, 'label-success': rating.percent>=70}"
+                          >{{rating.percent}}%</span>
+                </dd>
+
+            </dl>
+            <label>My personal story for the race is:</label>
+            <textarea rows="4" cols="50" ng-model="user.story"></textarea>
+
+            <label>I really enjoyed the race for:</label>
+            <textarea rows="4" cols="50" ng-model="user.pros"></textarea>
+            <label>Errr, it could have been better if:</label>
+            <textarea rows="4" cols="50" ng-model="user.cons"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            <input type="submit" class="btn primary-btn" value="Submit"/>
+        </div>
+    </form>
+</script>

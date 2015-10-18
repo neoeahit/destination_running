@@ -1,6 +1,6 @@
 'use strict';
 
-var activityModule = angular.module('routerApp', ['angular-svg-round-progress', 'ui.bootstrap','ngRoute', 'ui.select', 'ui.router']);
+var activityModule = angular.module('routerApp', ['angular-svg-round-progress', 'ui.bootstrap','ui.bootstrap.modal','ngRoute', 'ui.select', 'ui.router']);
 activityModule.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');

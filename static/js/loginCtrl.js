@@ -28,6 +28,10 @@ activityModule.service('LoginService', function ($modal, $rootScope) {
             {
                 $rootScope.currentUser = $scope.username;
                 $scope.$close($rootScope.currentUser)
+                $scope.error = ''
+            }
+            else{
+                $scope.error = "Username or Password is Incorrect"
             }
         }, function (error) {
             alert(error.data);
