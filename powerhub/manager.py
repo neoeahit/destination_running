@@ -111,7 +111,7 @@ if __name__ == "__main__":
         handlers,
         debug=options.debug,
         db=config.db,
-        cookie_secret="61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
+        cookie_secret=config.cookie_secret,
         login_url="/auth/login/"
     )
     application.listen(options.port)
